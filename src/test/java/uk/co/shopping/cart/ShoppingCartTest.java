@@ -72,4 +72,17 @@ public class ShoppingCartTest {
         assertEquals("Shopping cart checkout price ", 2.05d, shoppingCartService.checkout(products), 0d);
     }
 
+    // negative unit test cases
+    @Test
+    public void checkoutEmptyProducts() throws Exception {
+        List<Product> products = new ArrayList<Product>();
+
+        assertEquals("Shopping cart checkout price ", 0d, shoppingCartService.checkout(products), 0d);
+    }
+
+    @Test
+    public void checkoutProductsListIsNULL() throws Exception {
+        assertEquals("Shopping cart checkout price ", 0d, shoppingCartService.checkout(null), 0d);
+    }
+
 }

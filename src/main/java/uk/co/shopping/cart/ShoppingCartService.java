@@ -15,7 +15,10 @@ public class ShoppingCartService {
      * @return total of all items in the cart
      */
     public double checkout(List<Product> products) {
-        Double price = 0.0d;
+        double price = 0.0d;
+        if (products == null) {
+            return price;
+        }
         for (Product product : products) {
             price += product.getUnitPrice();
         }

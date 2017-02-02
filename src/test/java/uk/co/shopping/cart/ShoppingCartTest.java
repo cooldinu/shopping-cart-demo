@@ -29,7 +29,7 @@ public class ShoppingCartTest {
     @Test
     public void checkoutSingleApple() throws Exception {
         List<Product> products = new ArrayList<Product>();
-        products.add(new Product(1, "Apple", 0.6));
+        products.add(new Product(1, "Apple", 1, 0.6));
 
         assertEquals("Shopping cart checkout price ", 0.6d, shoppingCartService.checkout(products), 0d);
     }
@@ -37,17 +37,15 @@ public class ShoppingCartTest {
     @Test
     public void checkoutThreeApples() throws Exception {
         List<Product> products = new ArrayList<Product>();
-        products.add(new Product(1, "Apple", 0.6));
-        products.add(new Product(1, "Apple", 0.6));
-        products.add(new Product(1, "Apple", 0.6));
+        products.add(new Product(1, "Apple", 3, 0.6));
 
-        assertEquals("Shopping cart checkout price ", 1.8d, shoppingCartService.checkout(products), 0d);
+        assertEquals("Shopping cart checkout price ", 1.2d, shoppingCartService.checkout(products), 0d);
     }
 
     @Test
     public void checkoutSingleOrange() throws Exception {
         List<Product> products = new ArrayList<Product>();
-        products.add(new Product(2, "Orange", 0.25));
+        products.add(new Product(2, "Orange", 1, 0.25));
 
         assertEquals("Shopping cart checkout price ", 0.25d, shoppingCartService.checkout(products), 0d);
     }
@@ -55,8 +53,7 @@ public class ShoppingCartTest {
     @Test
     public void checkoutThreeOranges() throws Exception {
         List<Product> products = new ArrayList<Product>();
-        products.add(new Product(2, "Orange", 0.25));
-        products.add(new Product(2, "Orange", 0.25));
+        products.add(new Product(2, "Orange", 3, 0.25));
 
         assertEquals("Shopping cart checkout price ", 0.5d, shoppingCartService.checkout(products), 0d);
     }
@@ -64,12 +61,10 @@ public class ShoppingCartTest {
     @Test
     public void checkoutMultipleItems() throws Exception {
         List<Product> products = new ArrayList<Product>();
-        products.add(new Product(1, "Apple", 0.6));
-        products.add(new Product(1, "Apple", 0.6));
-        products.add(new Product(2, "Orange", 0.25));
-        products.add(new Product(1, "Apple", 0.6));
+        products.add(new Product(1, "Apple", 3, 0.6));
+        products.add(new Product(2, "Orange", 1, 0.25));
 
-        assertEquals("Shopping cart checkout price ", 2.05d, shoppingCartService.checkout(products), 0d);
+        assertEquals("Shopping cart checkout price ", 1.45d, shoppingCartService.checkout(products), 0d);
     }
 
     // negative unit test cases

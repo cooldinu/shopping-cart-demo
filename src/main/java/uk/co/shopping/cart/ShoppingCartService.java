@@ -9,6 +9,12 @@ import java.util.List;
  */
 public class ShoppingCartService {
 
+    private Offers offers;
+
+    public ShoppingCartService() {
+        offers = new Offers();
+    }
+
     /**
      * method to checkout the items in the shopping-cart
      * @param products
@@ -19,11 +25,23 @@ public class ShoppingCartService {
         if (products == null) {
             return price;
         }
+        products.stream()
+                .forEach(item -> applyOffers(item));
         for (Product product : products) {
-            price += product.getUnitPrice();
+            price += applyOffers(product);
         }
         return BigDecimal.valueOf(price)
                 .setScale(2, RoundingMode.HALF_UP)
                 .doubleValue();
+    }
+
+    private double applyOffers(Product product) {
+        if(product.getName().equals("Apple")){
+            return offers.buyOneGetOneFree(product.getQuantity(), 0.60d);
+        }
+        else if(product.getName().equals("Orange")){
+            return offers.buyThreeForPriceOfTwo(product.getQuantity(), 0.25d);
+        }
+        return product.getUnitPrice();
     }
 }

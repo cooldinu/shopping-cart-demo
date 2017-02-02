@@ -2,7 +2,8 @@
 
 A maven based project to demo the coding skills for the HMRC job.
 
- The assignment is to implement a simple shopping cart application, I have used Java language to implement the solution.
+ The assignment is to implement a simple shopping cart application,
+  I have used Java language to implement the solution. I have structured the code by feature.
 
  This sample applications caters for the following high level requirements -
 

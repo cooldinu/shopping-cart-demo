@@ -25,8 +25,6 @@ public class ShoppingCartService {
         if (products == null) {
             return price;
         }
-        products.stream()
-                .forEach(item -> applyOffers(item));
         for (Product product : products) {
             price += applyOffers(product);
         }
